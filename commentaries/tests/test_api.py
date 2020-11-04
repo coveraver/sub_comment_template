@@ -1,6 +1,6 @@
 import json
 
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.response import Response
@@ -60,7 +60,7 @@ class AddSubCommentTestCase(APITestCase):
 
         })
         Commentary.objects.create(body='Please comment me!')
-        self.user = User.objects.create_user('tester')
+        self.user = get_user_model().objects.create_user('tester')
         self.url = reverse('add-sub')
 
     def test_valid_create(self) -> None:
@@ -81,7 +81,7 @@ class AddSubCommentTestCase(APITestCase):
     def test_invalid_comment_id(self) -> None:
         self.client.force_login(self.user)
         response: Response = self.client.post(self.url, data=self.data_with_invalid_comment_id,
-                                    content_type='application/json')
+                                              content_type='application/json')
 
         self.assertEqual(status.HTTP_400_BAD_REQUEST, response.status_code)
 
