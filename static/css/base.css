@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 14px;
+}
+
+.commentary {
+    padding: 20px;
+    line-height: 2em;
+}
+
+.commentary__content {
+    display: flex;
+    flex-direction: column;
+    background: beige;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 300px;
+}
+
+.sub {
+    background: #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0 0 10px 0;
+}
+
+.commentary__more_btn,
+.commentary__set-comment__btn {
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 10px 0;
+    outline: none;
+}
+
+.commentary__more_btn:hover,
+.commentary__set-comment__btn:hover {
+    cursor: pointer;
+}
+
+#commentary__textarea {
+    border: none;
+    outline: none;
+    resize: none;
+}

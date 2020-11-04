@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comments</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+<div class="commentary">
+    {% for commentary in comments %}
+        <div class="commentary__content">
+            <p>Дата публикации: {{ commentary.timestamp }}</p>
+            <h4>{{ commentary.body }}</h4>
+            <label for="commentary__textarea"></label>
+            <textarea id="commentary__textarea" rows="5" cols="20" maxlength=250 style="display: none;"
+                      onInput="handleChange(this)"></textarea>
+        </div>
+        <div>
+            <button class="commentary__more_btn" onClick="fetchSubComments(this)" value={{ commentary.id }}>Больше
+            </button>
+            <button class="commentary__set-comment__btn" onClick="setComment(this)" value={{ commentary.id }}>
+                Коментировать
+            </button>
+        </div>
+        <div></div>
+    {% endfor %}
+</div>
+<script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>
